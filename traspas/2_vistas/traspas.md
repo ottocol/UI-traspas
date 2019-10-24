@@ -207,7 +207,7 @@ Para saber cuándo cambia el valor de la mayoría de los controles usamos *actio
 //de la ventana del storyboard al editor con el código del view controller
 //Elegimos Connection "action" y type "UISlider"
 @IBAction func cambiaSlider(_ sender: UISlider) {
-    print("El valor es: \sender.")
+    print("El valor es: \(sender.value)")
 }
 ```
 
