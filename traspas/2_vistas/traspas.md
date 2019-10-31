@@ -249,6 +249,7 @@ Estos dos protocolos heredan de `NSObjectProtocol` con lo que los objetos confor
 
 
 ```swift
+import UIKit
 class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var lista = ["Pepe", "Eva", "Juan", "María"]
 
