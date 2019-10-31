@@ -252,7 +252,8 @@ Estos dos protocolos heredan de `NSObjectProtocol` con lo que los objetos confor
 class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var lista = ["Pepe", "Eva", "Juan", "María"]
 
-    //METODOS DE UIPickerViewDelegate
+    
+    //METODOS DE UIPickerViewDataSource
     //número de "columnas" del Picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -262,7 +263,7 @@ class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         return lista.count
     }
 
-    //METODOS DE UIPickerViewDataSource
+    //METODOS DE UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return lista[row]
     }   
