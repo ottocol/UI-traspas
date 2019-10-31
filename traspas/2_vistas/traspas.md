@@ -5,29 +5,26 @@
 
 ## Puntos a tratar
 
-1. Creación de vistas por código
+1. Vistas y jerarquía de vistas
 2. Propiedades de una vista
 3. Controles de usuario básicos
 
 ---
 
-## Creación de vistas por código
+## Vistas y jerarquía de vistas
 
-Todo lo que se puede hacer **visualmente** con Xcode se puede hacer también de forma **programática**, ya que lo único que hace el entorno es crear objetos de la API de Cocoa Touch y establecer sus propiedades.
+
+Del libro ["Modern Auto Layout", Keith Harrison](https://gumroad.com/l/albook)
+
+![](img/view_hierarchy.png) <!-- .element: class="stretch" --> 
 
 ---
 
-## Vistas y jerarquía de vistas
+## Vistas y jerarquía de vistas en Xcode
 
-- cada vista está asociada a un controller, como ya sabemos, y tiene subvistas
 
-```swift
-//este código estaría en un controller
-let boton = UIButton(type: .system)
-boton.setTitle("Soy un botón", for: .normal)
-boton.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
-self.view.addSubview(boton)
-```
+![](img/view_hierarchy_xcode.png)
+
 
 ---
 
@@ -38,9 +35,9 @@ self.view.addSubview(boton)
 
 ## Sistema de coordenadas
 
-<!-- .element class="stretch" -->
-![](img/flipped_coordinates-2_2x.png)
+![](img/flipped_coordinates-2_2x.png) <!-- .element class="stretch" -->
 
+- Las coordenadas se dan en *puntos* y no en pixels físicos para independizarse en lo posible del dispositivo
 - [resoluciones de dispositivos iOS](http://iosres.com)
 
 
@@ -187,13 +184,40 @@ Un problema típico es cómo "quitarlo de enmedio". Para quitarlo al pulsar sobr
 
 ---
 
-## Teclado sin intro
+## Otra forma de hacerlo
 
-El teclado numérico no tiene intro, en este caso lo típico es hacer que se oculte cuando se hace *tap* en el background
+- Usando el `UITextFieldDelegate`. El método `textFieldShouldReturn` es el que se llama cuando se pulsa intro.
 
 ```swift
+class ViewController: UITextFieldDelegate {
+   //El outlet vinculado con el campo de texto 
+   @IBOutlet weak var campoTexto: UITextField!
+
+   override func viewDidLoad() {
+        super.viewDidLoad()
+        self.campoTexto.delegate = self
+   } 
+
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     textField.resignFirstResponder()
+     return true 
+   }
+}
+```
+
+
+---
+
+## Teclado sin intro o text view
+
+- El teclado numérico no tiene intro, y en los *text view* de varias líneas se debería permitir al usuario que pulsara INTRO para añdir nuevas líneas. 
+- Podemos hacer que se oculte cuando se hace *tap* en el background
+
+```swift
+//en el view controller
 override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
     print("¡¡touch en la pantalla!!");
+    //busca el first responder y hace que deje de serlo
     self.view.endEditing(true);
 }
 ```

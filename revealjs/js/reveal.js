@@ -1751,6 +1751,9 @@
 
 		if( dom.wrapper && !isPrintingPDF() ) {
 
+			//Remove <p> surrounding <img class="stretch">
+			removeParagraphsFromStretchedImages()
+
 			var size = getComputedSlideSize();
 
 			// Layout the contents of the slides
@@ -4923,6 +4926,13 @@
 		}
 
 	};
+
+	function removeParagraphsFromStretchedImages() {
+    	toArray(dom.slides.querySelectorAll('section > p > .stretch')).forEach( 
+    		function( element ) {
+    		  element.parentNode.parentNode.replaceChild(element, element.parentNode)
+		    })
+    }
 
 
 	// --------------------------------------------------------------------//

@@ -1,5 +1,5 @@
 # Interfaz de usuario en dispositivos móviles
-## iOS, sesión 1: View controllers
+## iOS básico, sesión 1: View controllers
 
 ---
 
@@ -39,9 +39,15 @@ Apple usa el confuso término "View Controller" para referirse al controlador de
 
 ---
 
+## Content controllers
+
+![](img/content_controller.png) 
+
+---
+
+## Container controllers
+
 ![](img/content_vs_container.png) 
-
-
 
 ---
 
@@ -86,7 +92,7 @@ didReceiveMemoryWarning()
 ## `viewDidAppear()`
 
 - Se llama cada vez que se muestra la vista asociada al controlador
-- Típicamente usada para iniciar animaciones
+- Típicamente usada para iniciar/parar animaciones
 
 ---
 
@@ -96,7 +102,7 @@ didReceiveMemoryWarning()
 
 ```swift
 override func loadView {
-    vista = UIView(frame:UIScreen.main.applicationFrame
+    vista = UIView(frame:UIScreen.main.applicationFrame)
     vista.backgroundColor = UIColor.greenColor
     self.view = vista;
  }
@@ -134,12 +140,12 @@ override func loadView {
 - Por defecto, las clases de las nuevas pantallas serán propias de Cocoa: `UIViewController`, `UITableViewController`,... 
 - En general las cambiaremos por las nuestras, para poder escribir nuestro propio código.
 
-![](img/controller_class.png) 
+![](img/view_controller_library.png) <!-- .element: class="stretch" -->
 
 
 ---
 
-- **Controlador inicial:** la "pantalla" que se va a mostrar al inicio de la aplicación (sin contar la de *splash*)
+- **Controlador inicial:** la "pantalla" que se va a mostrar al inicio de la aplicación (sin contar la *launch screen*)
 
 ![](img/controlador_inicial.png) 
 
@@ -206,6 +212,7 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 }
 ```
+
 ---
 
 ## Volver atrás en un *segue*
