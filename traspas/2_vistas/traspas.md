@@ -126,7 +126,7 @@ alert.addAction(susto)
 alert.addAction(muerte)
 //Mostramos el alert con present, como se hace con cualquier controller
 self.present(alert, animated: true) {
-    print("Ha desaparecido el alert")
+    print("Ha acabado la animación del alert")
 }
 ```
 
@@ -159,7 +159,7 @@ actionSheet.addAction(archivar)
 actionSheet.addAction(eliminar)
 actionSheet.addAction(cancelar)
 self.present(actionSheet, animated: true) {
-   print("Ha desaparecido el action sheet")
+   print("Ha acabado la animación del action sheet")
 }
 ```
 
