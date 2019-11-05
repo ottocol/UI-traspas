@@ -2,15 +2,13 @@
 ## iOS, sesión 3: Autolayout
 
 
-
-
 ---
 
 
 Cuando diseñamos una interfaz, esta debería verse correctamente en cualquier dispositivo, independientemente de la resolución real.
 
 <!-- .element class="stretch" -->
-![](img/pioneras.jpg)
+![](img/pioneras.png)
 
 ---
 
@@ -162,15 +160,21 @@ Es decir, *autolayout* **está resolviendo un sistema de ecuaciones lineales** s
 
 ---
 
-## "Prioridades" de los componentes
 
-- A los componentes "no les gusta" ser "chafados" (*compression resistance*, valor alto por defecto)
-- A los componentes "no les importa demasiado" evitar el *padding* (*content hugging*, valor bajo por defecto)
+Hay casos en los que puede ser necesario "comprimir" o "ensanchar" los componentes para cumplir las restricciones
+
+![](img/hugging_ambiguo.png)  
+
+En este caso el *layout* es ambiguo, sobra espacio horizontal. ¿Se debería ensanchar el *label* o la imagen?
 
 ---
 
-<blockquote data-lang="es"><p lang="en" dir="ltr"><a href="https://twitter.com/0xced?ref_src=twsrc%5Etfw">@0xced</a> I used to have this in front of my desk <a href="http://t.co/TVrOHRF8dj">pic.twitter.com/TVrOHRF8dj</a></p>&mdash; Gio + 👶 + 🤦‍♀️ (@mokagio) <a href="https://twitter.com/mokagio/status/632464618305097728?ref_src=twsrc%5Etfw">15 de agosto de 2015</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+## "Prioridades" de los componentes
+
+Los componentes que tienen un tamaño intrínseco intentan mantenerlo así pero se pueden definir prioridades
+
+- *Compression resistance* prioridad con la que un componente intentará evitar ser comprimido (en Xcode actual por defecto todos 750)
+- *Content hugging*, prioridad con la que un componente intentará evitar ser expandido (en Xcode actual por defecto todos 251)
 
 ---
 

@@ -123,7 +123,7 @@ import Foundation
 import UIKit
 
 class MiDataSource : NSObject, UITableViewDataSource {
-    var datos = ["Uno", "Dos", "Tres",...]
+    var datos = ["Uno", "Dos", "Tres", "Cuatro"]
 
     //Ahora veremos qué métodos debemos implementar
 
@@ -267,6 +267,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 ## Poner/quitar modo edición
 
+- Por defecto aparece una señal de "prohibido" en cada celda que sirve para borrarla
+- Activar/desactivar edición no tiene por qué ir en el *delegate*, el *delegate* sería el encargado de borrar/editar una vez en el modo edición
 
 ```swift
 //En el controller, esto es un outlet
