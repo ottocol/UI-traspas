@@ -1,5 +1,5 @@
 # Interfaz de usuario en dispositivos móviles
-## iOS, sesión 4: Tablas
+## iOS, sesión 3: Tablas
 
 
 
@@ -9,27 +9,6 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 <!-- .element class="stretch" -->
 ![](img/apps_tablas.png)
-
----
-
-## Tablas agrupadas/sin agrupar
-
-![](img/tabla_agrup_plain.png)
-
-
----
-
-## Estilos de las celdas
-
-- Predefinidos: por defecto, subtítulo, value1, value2
-- Personalizados (en el *storyboard* o por código)
-
-
----
-
-## Estilos value1 y value2
-
-![](img/tabla_value1_value2.png)
 
 
 ---
@@ -52,6 +31,10 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 - El número y tamaño de filas y secciones es conocido con anterioridad. Que sean estáticas no quiere decir que el contenido no pueda cambiar
 - Usadas simplemente para organizar mejor la información
 
+Usadas con `UITableViewController`, que es un *view controller* especial que contiene solo una tabla, que "llena" la pantalla
+
+
+
 ---
 
 # 2. Tablas dinámicas
@@ -72,7 +55,6 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 + El **datasource**, al que el *controller* le va pidiendo datos dinámicamente
 + El **delegate** (opcional). gestiona algunos eventos de edición y algunos aspectos de la apariencia de las celdas
 
-En ejemplos sencillos es común que el mismo objeto esté en los tres papeles (normalmente el *view controller* de la pantalla). iOS nos ofrece una clase de este tipo, el `UITableViewController`
 
 
 ---
@@ -251,7 +233,7 @@ class MiDelegate : NSObject, UITableViewDelegate {
 ```swift
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let celda = tableView.cellForRow(at: indexPath) {
-        if celda.accessoryType==UITableViewCellAccessoryType.none {
+        if celda.accessoryType==UITableViewCell.AccessoryType.none {
             celda.accessoryType = .checkmark
         }
         else {
